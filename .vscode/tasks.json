@@ -6,9 +6,9 @@
         {
             "label": "Run test file",
             "type": "shell",
-            "command": "./tools/HardwareSimulator.sh ${file}",
+            "command": "./tools/HardwareSimulator.sh ${fileDirname}/${fileBasenameNoExtension}.tst",
             "windows": {
-                "command": "./tools/HardwareSimulator.bat ${file}"
+                "command": "./tools/HardwareSimulator.bat ${fileDirname}/${fileBasenameNoExtension}.tst"
             },
             "group": {
                 "kind": "test",
