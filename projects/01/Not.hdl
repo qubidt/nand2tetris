@@ -13,5 +13,7 @@ CHIP Not {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    // ~x := ~(x*y)
+    //    := Nand(x,x)
+    Nand(a=in, b=in, out=out);
 }
