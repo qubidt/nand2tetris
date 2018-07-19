@@ -13,5 +13,10 @@ CHIP Xor {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    // x^y := (xy)'(x'y')'
+    //     := (x nand y)(x'y')'
+    //     := (x nand y)(x+y)
+    Or(a=a, b=b, out=aOrB);
+    Nand(a=a, b=b, out=aNandB);
+    And(a=aNandB, b=aOrB, out=out);
 }
