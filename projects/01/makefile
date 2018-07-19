@@ -21,33 +21,43 @@ CHIP_EXT := .hdl
 TEST_EXT := .tst
 OUT_EXT := .out
 
-TEST_COMMAND := $(CURDIR)/../../tools/HardwareSimulator.sh 
+ifeq ($(shell uname -o),Msys)
+	TEST_COMMAND := $(CURDIR)/../../tools/HardwareSimulator.bat
+else
+	TEST_COMMAND := $(CURDIR)/../../tools/HardwareSimulator.sh
+endif
 SUBMISSION := project1.zip
 
-.PHONY: $(TARGETS) alltests clean submit
+.PHONY: $(TARGETS) alltests clean submit $(OUTPUTS)
 
 $(OUTPUTS):
-	@$(TEST_COMMAND) $(basename $@)$(TEST_EXT) 2>&1
+	$(TEST_COMMAND) $(basename $@)$(TEST_EXT)
 
 $(CHIPS): %$(CHIP_EXT) : %
 $(TESTS): %$(TEST_EXT) : %
-
 $(TARGETS):
-	@$(MAKE) 2>/dev/null $@$(OUT_EXT) ; \
-	exit_code=$$? ; \
-	$(RM) $@$(OUT_EXT) ; \
-	exit $$exit_code
+	@( \
+		testResult=$$($(TEST_COMMAND) $@$(TEST_EXT) 2>&1) ; \
+		rm -f $@$(OUT_EXT) ; \
+		echo $$testResult ; \
+		[[ $$testResult =~ "Comparison ended successfully" ]] || exit 1; \
+	)
 
 alltests :
 	$(info Running all tests)
-	@( \
-	for target in $(TESTS) ; do \
-		printf "%-14s | " $$target ; \
-		$(MAKE) 2>/dev/null $$target ; \
-	done \
+	( \
+	failed=0; \
+	success_msg="" ; \
+	for test in $(TESTS) ; do \
+		testResult=$$($(TEST_COMMAND) $$test 2>&1) ; \
+		rm -f $$(basename "$$test" .tst).out ; \
+		printf "%-14s | %s\n" "$$test" "$$testResult"; \
+		[[ $$testResult =~ "Comparison ended successfully" ]] || ((failed++)); \
+	done ; \
+	exit "$$failed" ; \
 	)
 
-submit: clean
+submit: clean alltests
 	$(info Creating $(SUBMISSION))
 	@zip $(SUBMISSION) $(ALLCHIPS)
 
