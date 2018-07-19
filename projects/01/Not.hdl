@@ -13,7 +13,7 @@ CHIP Not {
     OUT out;
 
     PARTS:
-    // ~x := ~(x*y)
-    //    := Nand(x,x)
+    // ~x := ~(xx)      // idempotence
+    //    := NAND(x,x)
     Nand(a=in, b=in, out=out);
 }

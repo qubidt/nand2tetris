@@ -14,8 +14,8 @@ CHIP And {
     OUT out;
 
     PARTS:
-    // a*b := ~(  ~(a*b)   )
-    //     := ~( Nand(a,b) )
+    // xy := ~(  ~(xy)   )
+    //    := ~( x NAND y )
     Nand(a=a, b=b, out=nandOut);
     Not(in=nandOut, out=out);
 }
