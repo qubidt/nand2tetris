@@ -45,7 +45,7 @@ $(TARGETS):
 
 alltests :
 	$(info Running all tests)
-	( \
+	@( \
 	failed=0; \
 	success_msg="" ; \
 	for test in $(TESTS) ; do \

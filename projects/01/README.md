@@ -6,18 +6,18 @@ Chip Implementations
 
 | Chip      | Components            | Total Nand    |
 |-----------|-----------------------|---------------|
+| Not       | 1 Nand                | 1             |
 | And       | 1 Nand; 1 Not         | 2             |
-| And16     |                       |               |
-| DMux      | 1 Not; 2 And          | 5             |
-| DMux4Way  |                       |               |
-| DMux8Way  |                       |               |
+| Or        | 1 Nand; 2 Not         | 3             |
+| Xor       | 1 Nand; 1 Or; 2 And   | 6             |
 | Mux       | 1 Not; 2 And; 1 Or    | 8             |
-| Mux16     |                       |               |
+| DMux      | 1 Not; 2 And          | 5             |
+| Not16     | 16 Not                | 16            |
+| And16     | 16 And                | 32            |
+| Or16      | 16 Or                 | 48            |
+| Mux16     | 16 Mux                | 128           |
+| Or8Way    |                       |               |
 | Mux4Way16 |                       |               |
 | Mux8Way16 |                       |               |
-| Not       | 1 Nand                | 1             |
-| Not16     |                       |               |
-| Or        | 1 Nand; 2 Not         | 3             |
-| Or16      |                       |               |
-| Or8Way    |                       |               |
-| Xor.hdl   | 1 Nand; 1 Or; 2 And   | 6             |
+| DMux4Way  |                       |               |
+| DMux8Way  |                       |               |
