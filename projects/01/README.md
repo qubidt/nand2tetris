@@ -16,7 +16,7 @@ Chip Implementations
 | And16     | 16 And                | 32            |
 | Or16      | 16 Or                 | 48            |
 | Mux16     | 16 Mux                | 128           |
-| Or8Way    |                       |               |
+| Or8Way    | 7 OR                  | 21            |
 | Mux4Way16 |                       |               |
 | Mux8Way16 |                       |               |
 | DMux4Way  |                       |               |
