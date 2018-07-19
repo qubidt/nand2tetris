@@ -11,7 +11,7 @@ Chip Implementations
 | DMux      |                       |               |
 | DMux4Way  |                       |               |
 | DMux8Way  |                       |               |
-| Mux       |                       |               |
+| Mux       | 1 Not; 2 And; 1 Or    | 8             |
 | Mux16     |                       |               |
 | Mux4Way16 |                       |               |
 | Mux8Way16 |                       |               |
