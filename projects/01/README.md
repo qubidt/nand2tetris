@@ -8,7 +8,7 @@ Chip Implementations
 |-----------|-----------------------|---------------|
 | And       | 1 Nand; 1 Not         | 2             |
 | And16     |                       |               |
-| DMux      |                       |               |
+| DMux      | 1 Not; 2 And          | 5             |
 | DMux4Way  |                       |               |
 | DMux8Way  |                       |               |
 | Mux       | 1 Not; 2 And; 1 Or    | 8             |
