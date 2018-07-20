@@ -21,3 +21,10 @@ Chip Implementations
 | Mux8Way16 |                       |               |
 | DMux4Way  |                       |               |
 | DMux8Way  |                       |               |
+
+Helper Chips
+------------
+
+| Chip      | Components            | Total Nand    |
+|-----------|-----------------------|---------------|
+| Nor       | 1 Or; 1 Not           | 4             |

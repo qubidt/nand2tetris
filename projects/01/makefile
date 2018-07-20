@@ -1,4 +1,4 @@
-TARGETS := And \
+PROJECT_CHIPS := And \
            And16 \
            DMux \
            DMux4Way \
@@ -12,7 +12,12 @@ TARGETS := And \
            Or \
            Or16 \
            Or8Way \
-           Xor
+           Xor \
+
+HELPER_CHIPS := Nor
+
+TARGETS := $(PROJECT_CHIPS) $(HELPER_CHIPS)
+
 CHIPS = $(TARGETS:=$(CHIP_EXT))
 ALLCHIPS = $(wildcard *$(CHIP_EXT))
 TESTS = $(TARGETS:=$(TEST_EXT))
