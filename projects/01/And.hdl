@@ -14,7 +14,7 @@ CHIP And {
     OUT out;
 
     PARTS:
-    // xy := ~(  ~(xy)   )
+    // xy := ~(  ~(xy)   )  // Involution law
     //    := ~( x NAND y )
     Nand(a=a, b=b, out=nandOut);
     Not(in=nandOut, out=out);
