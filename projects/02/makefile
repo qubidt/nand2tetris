@@ -2,16 +2,22 @@ PROJECT_CHIPS := ALU \
                  Add16 \
                  FullAdder \
                  HalfAdder \
-                 Inc16 \
+                 Inc16
 
 HELPER_CHIPS := 
 
 TARGETS := $(PROJECT_CHIPS) $(HELPER_CHIPS)
 
-CHIPS = $(TARGETS:=$(CHIP_EXT))
-ALLCHIPS = $(wildcard *$(CHIP_EXT))
-TESTS = $(TARGETS:=$(TEST_EXT))
-OUTPUTS = $(TARGETS:=$(OUT_EXT))
+ALLCHIPS = $(PROJECT_CHIPS:=$(CHIP_EXT)) $(HELPER_CHIPS:=$(CHIP_EXT))
+
+TESTS := ALU.tst \
+         ALU-nostat.tst \
+         Add16.tst \
+         FullAdder.tst \
+         HalfAdder.tst \
+         Inc16.tst
+
+OUTPUTS = $(TESTS:$(TEST_EXT)=$(OUT_EXT))
 CHIP_EXT := .hdl
 TEST_EXT := .tst
 OUT_EXT := .out
@@ -23,20 +29,21 @@ else
 endif
 SUBMISSION := project2.zip
 
-.PHONY: $(TARGETS) alltests clean submit $(OUTPUTS)
+.PHONY: $(TARGETS) $(OUTPUTS) $(TESTS) alltests clean submit
 
 $(OUTPUTS):
 	$(TEST_COMMAND) $(basename $@)$(TEST_EXT)
 
 $(CHIPS): %$(CHIP_EXT) : %
-$(TESTS): %$(TEST_EXT) : %
-$(TARGETS):
+$(TESTS):
 	@( \
-		testResult=$$($(TEST_COMMAND) $@$(TEST_EXT) 2>&1) ; \
+		testResult=$$($(TEST_COMMAND) $@ 2>&1) ; \
 		rm -f $@$(OUT_EXT) ; \
 		echo $$testResult ; \
 		[[ $$testResult =~ "Comparison ended successfully" ]] || exit 1; \
 	)
+
+$(TARGETS): % : %$(TEST_EXT)
 
 alltests :
 	$(info Running all tests)
