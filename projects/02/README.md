@@ -6,7 +6,7 @@ Chip Implementations
 
 | Chip      | Components           | Total Nand |
 | --------- | -------------------- | ---------- |
-| HalfAdder |                      |            |
+| HalfAdder | 1 And, 1 Xor         | 8          |
 | FullAdder |                      |            |
 | Add16     |                      |            |
 | Inc16     |                      |            |
