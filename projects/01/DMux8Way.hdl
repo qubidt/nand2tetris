@@ -16,5 +16,10 @@ CHIP DMux8Way {
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    // Put your code here:
+    // Select between either groups of 4-outputs with a 2-output demux
+    DMux(in=in, sel=sel[2], a=dmuxGroupA, b=dmuxGroupB);
+
+    // for each group, use a 4-way demux to forward input to correct output
+    DMux4Way(in=dmuxGroupA, sel=sel[0..1], a=a, b=b, c=c, d=d);
+    DMux4Way(in=dmuxGroupB, sel=sel[0..1], a=e, b=f, c=g, d=h);
 }

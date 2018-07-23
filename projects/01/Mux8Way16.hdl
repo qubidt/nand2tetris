@@ -18,5 +18,10 @@ CHIP Mux8Way16 {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    // Select one of each group of 4 using a 4-way 16-bit mux
+    Mux4Way16(a=a, b=b, c=c, d=d, sel=sel[0..1], out=muxGroupA);
+    Mux4Way16(a=e, b=f, c=g, d=h, sel=sel[0..1], out=muxGroupB);
+
+    // Select one of the groups using a 2-way 16-bit mux
+    Mux16(a=muxGroupA, b=muxGroupB, sel=sel[2], out=out);
 }

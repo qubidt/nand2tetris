@@ -17,10 +17,10 @@ Chip Implementations
 | Or16      | 16 Or                 | 48            |
 | Mux16     | 16 Mux                | 128           |
 | Or8Way    | 7 Or                  | 21            |
-| Mux4Way16 |                       |               |
-| Mux8Way16 |                       |               |
+| Mux4Way16 | 3 Mux16               | 384           |
+| Mux8Way16 | 2 Mux4Way16, 1 Mux16  | 896           |
 | DMux4Way  | 3 DMux                | 12            |
-| DMux8Way  |                       |               |
+| DMux8Way  | 2 DMux4Way, 1 Dmux    | 28            |
 
 Helper Chips
 ------------
