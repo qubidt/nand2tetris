@@ -13,6 +13,8 @@ CHIP HalfAdder {
         carry;  // Left bit of a + b
 
     PARTS:
+    // Naive implementation using separate gates to get sum and carry
+    // Can be improved by combining circuits
     Xor(a=a, b=b, out=sum);
     And(a=a, b=b, out=carry);
 }
